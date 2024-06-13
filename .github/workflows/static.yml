@@ -36,8 +36,12 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload only the content of src/html
-          path: 'src/html'
+          # Upload the content of src/html, src/css, src/js, and src/image
+          path: |
+            src/html
+            src/css
+            src/js
+            src/image
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
