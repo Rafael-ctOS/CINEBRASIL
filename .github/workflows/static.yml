@@ -23,7 +23,7 @@ jobs:
 
       - name: Build and prepare deployment
         run: |
-          npm install  # Assuming you need to install dependencies
+
           npm run build  # Replace with your build command if needed
           mkdir public
           cp -r src/html/* public/
