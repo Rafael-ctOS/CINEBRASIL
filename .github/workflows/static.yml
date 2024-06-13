@@ -1,0 +1,62 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload the content of src/html, src/css, src/js, src/image, and subdirectories
+          path: |
+            src/html
+            src/html/html-filmes
+            src/css
+            src/js
+            src/image
+            src/image/Elenco
+            src/image/Elenco/Até\ que\ a\ sorte\ nos\ separe
+            src/image/Elenco/Crô
+            src/image/Elenco/Eduardo\ e\ Monica
+            src/image/Elenco/Mais\ Pesado\ É\ o\ Céu
+            src/image/Elenco/Menino\ Maluquinho
+            src/image/Elenco/Meu\ Nome\ Não\ É\ Johnny
+            src/image/Elenco/Minha\ Mãe\ é\ uma\ Peça
+            src/image/Elenco/O\ Auto\ da\ Compadecida
+            src/image/Elenco/O\ Homem\ Que\ Desafiou\ o\ Diabo
+            src/image/Elenco/O\ Lobo\ Atrás\ da\ Porta
+            src/image/Elenco/Ó\ Paí,\ Ó
+            src/image/Elenco/Tropa\ de\ Elite
+            src/image/Elenco/Vizinhos
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
