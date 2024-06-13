@@ -36,14 +36,14 @@ jobs:
       - name: Prepare deployment content
         run: |
           mkdir -p deployment
-          cp -r src/html/* deployment/
-          cp -r src/css deployment/
-          cp -r src/js deployment/
-          cp -r src/image deployment/
+          cp -r src/* deployment/
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
-          path: 'deployment'
+          name: pages
+          path: deployment
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          branch: gh-pages
+          folder: deployment
