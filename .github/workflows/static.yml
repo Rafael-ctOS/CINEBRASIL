@@ -33,15 +33,17 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Prepare deployment content
+        run: |
+          mkdir -p deployment
+          cp -r src/html/* deployment/
+          cp -r src/css deployment/
+          cp -r src/js deployment/
+          cp -r src/image deployment/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the content of src/html, src/css, src/js, src/image, and all subdirectories
-          path: |
-            src/html/**
-            src/css/**
-            src/js/**
-            src/image/**
+          path: 'deployment'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
