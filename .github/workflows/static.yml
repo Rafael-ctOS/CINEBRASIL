@@ -36,27 +36,12 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the content of src/html, src/css, src/js, src/image, and subdirectories
+          # Upload the content of src/html, src/css, src/js, src/image, and all subdirectories
           path: |
-            src/html
-            src/html/html-filmes
-            src/css
-            src/js
-            src/image
-            src/image/Elenco
-            src/image/Elenco/Até\ que\ a\ sorte\ nos\ separe
-            src/image/Elenco/Crô
-            src/image/Elenco/Eduardo\ e\ Monica
-            src/image/Elenco/Mais\ Pesado\ É\ o\ Céu
-            src/image/Elenco/Menino\ Maluquinho
-            src/image/Elenco/Meu\ Nome\ Não\ É\ Johnny
-            src/image/Elenco/Minha\ Mãe\ é\ uma\ Peça
-            src/image/Elenco/O\ Auto\ da\ Compadecida
-            src/image/Elenco/O\ Homem\ Que\ Desafiou\ o\ Diabo
-            src/image/Elenco/O\ Lobo\ Atrás\ da\ Porta
-            src/image/Elenco/Ó\ Paí,\ Ó
-            src/image/Elenco/Tropa\ de\ Elite
-            src/image/Elenco/Vizinhos
+            src/html/**
+            src/css/**
+            src/js/**
+            src/image/**
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
